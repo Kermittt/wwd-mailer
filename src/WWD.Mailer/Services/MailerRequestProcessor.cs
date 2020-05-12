@@ -30,6 +30,7 @@ namespace WWD.Mailer.Services
             var html = await _templateRenderer.RenderTemplate(request.TemplateKey, request.TemplateData.ToString(Formatting.None), cancellationToken);
 
             // TODO : 0 : Add retries to SendEmail
+            // TODO : 0 : Log success/fail of SendEmail
             // Send email
             _log.LogInformation($"Sending email for template '{request.TemplateKey}' to '{request.ToAddress}'.");
             var attachmentUris = request.Attachments.Select(a => a.Uri).ToList();
