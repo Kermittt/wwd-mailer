@@ -13,6 +13,7 @@ namespace WWD.Mailer
         {
             builder.Services.AddTransient<IMailerRequestProcessor, MailerRequestProcessor>();
             builder.Services.AddTransient<ITemplateRenderer, TemplateRenderer>();
+            builder.Services.AddTransient<IEmailService, EmailService>();
         }
     }
 }

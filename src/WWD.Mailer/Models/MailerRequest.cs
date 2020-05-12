@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WWD.Mailer.Models
 {
+    // TODO : 0 : Add Data property to pass to TemplateRenderer
     public class MailerRequest
     {
         public string ToAddress { get; set; }
