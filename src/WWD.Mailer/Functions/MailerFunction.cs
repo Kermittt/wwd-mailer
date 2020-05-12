@@ -8,6 +8,7 @@ using WWD.Mailer.Models;
 
 namespace WWD.Mailer.Functions
 {
+    // TODO : 0 : Add summary comments to all classes and interfaces
     public class MailerFunction
     {
         private readonly IMailerRequestProcessor _requestProcessor;

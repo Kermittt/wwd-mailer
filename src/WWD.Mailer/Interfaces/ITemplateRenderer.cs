@@ -6,6 +6,6 @@ namespace WWD.Mailer.Interfaces
 {
     public interface ITemplateRenderer
     {
-        Task<string> RenderTemplate(Guid templateKey, CancellationToken cancellationToken = default);
+        Task<string> RenderTemplate(Guid key, string data, CancellationToken cancellationToken = default);
     }
 }

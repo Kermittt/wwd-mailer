@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using WWD.Mailer.Interfaces;
 using WWD.Mailer.Models;
 
@@ -24,7 +25,7 @@ namespace WWD.Mailer.Services
         {
             // Render template
             _log.LogInformation($"Rendering template '{request.TemplateKey}'.");
-            var html = await _templateRenderer.RenderTemplate(request.TemplateKey, cancellationToken);
+            var html = await _templateRenderer.RenderTemplate(request.TemplateKey, request.TemplateData.ToString(Formatting.None), cancellationToken);
 
             // TODO : 0 : Add retries to SendEmail
             // Send email
