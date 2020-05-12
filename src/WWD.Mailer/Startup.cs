@@ -12,6 +12,7 @@ namespace WWD.Mailer
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddTransient<IMailerRequestProcessor, MailerRequestProcessor>();
+            builder.Services.AddTransient<ITemplateRenderer, TemplateRenderer>();
         }
     }
 }
