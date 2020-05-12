@@ -1,14 +1,36 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using WWD.Mailer.Interfaces;
+using WWD.Mailer.Models;
 
 namespace WWD.Mailer.Functions
 {
-    public static class MailerFunction
+    public class MailerFunction
     {
-        [FunctionName("MailerFunction")]
-        public static void Run([QueueTrigger("inbound-queue", Connection = "QueueConnection")]string myQueueItem, ILogger log)
+        private readonly IMailerRequestProcessor _requestProcessor;
+
+        public MailerFunction(IMailerRequestProcessor requestProcessor)
         {
-            log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+            _requestProcessor = requestProcessor;
+        }
+
+        [FunctionName("MailerFunction")]
+        public async Task Run([QueueTrigger("inbound-queue", Connection = "QueueConnection")]string queueItem, ILogger log)
+        {
+            log.LogInformation("Queue message received.");
+            try
+            {
+                // Attempt to deserialize the request and process it
+                var request = JsonConvert.DeserializeObject<MailerRequest>(queueItem);
+                await _requestProcessor.ProcessRequest(request);
+            }
+            catch (Exception e)
+            {
+                log.LogError(e, "Exception during processing.");
+            }
         }
     }
 }
