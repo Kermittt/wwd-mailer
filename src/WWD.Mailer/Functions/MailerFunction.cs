@@ -8,7 +8,9 @@ using WWD.Mailer.Models;
 
 namespace WWD.Mailer.Functions
 {
-    // TODO : 0 : Add summary comments to all classes and interfaces
+    /// <summary>
+    /// MailerFunction Azure Storage Service trigger.
+    /// </summary>
     public class MailerFunction
     {
         private readonly IMailerRequestProcessor _requestProcessor;
@@ -18,6 +20,11 @@ namespace WWD.Mailer.Functions
             _requestProcessor = requestProcessor;
         }
 
+        /// <summary>
+        /// Accepts requests from the 'inbound-queue' and initiates processing.
+        /// </summary>
+        /// <param name="queueItem">The queue item to be processed.</param>
+        /// <param name="log">An <see cref="ILogger"/> instance to perform logging.</param>
         [FunctionName("MailerFunction")]
         public async Task Run([QueueTrigger("inbound-queue", Connection = "QueueConnection")]string queueItem, ILogger log)
         {

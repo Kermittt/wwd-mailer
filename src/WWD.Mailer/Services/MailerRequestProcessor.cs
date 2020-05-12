@@ -8,6 +8,7 @@ using WWD.Mailer.Models;
 
 namespace WWD.Mailer.Services
 {
+    /// <inheritdoc cref="IMailerRequestProcessor" />
     public class MailerRequestProcessor : IMailerRequestProcessor
     {
         private readonly ILogger<IMailerRequestProcessor> _log;
@@ -21,6 +22,7 @@ namespace WWD.Mailer.Services
             _emailService = emailService;
         }
 
+        /// <inheritdoc />
         public async Task ProcessRequest(MailerRequest request, CancellationToken cancellationToken = default)
         {
             // Render template

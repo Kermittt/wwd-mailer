@@ -5,8 +5,10 @@ using WWD.Mailer.Interfaces;
 
 namespace WWD.Mailer.Services
 {
+    /// <inheritdoc cref="ITemplateRenderer" />
     public class TemplateRenderer : ITemplateRenderer
     {
+        /// <inheritdoc />
         public Task<string> RenderTemplate(Guid key, string data, CancellationToken cancellationToken = default)
         {
             // TODO : This service should make a call to the external template renderer and return the resulting html string

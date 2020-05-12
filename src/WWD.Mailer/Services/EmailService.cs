@@ -5,8 +5,10 @@ using WWD.Mailer.Interfaces;
 
 namespace WWD.Mailer.Services
 {
+    /// <inheritdoc cref="IEmailService" />
     public class EmailService : IEmailService
     {
+        /// <inheritdoc />
         public Task SendEmail(string toAddress, string fromAddress, string subject, string body, IEnumerable<string> attachmentUris, CancellationToken cancellationToken = default)
         {
             // TODO : This service should make a call to the external email service to send the email
