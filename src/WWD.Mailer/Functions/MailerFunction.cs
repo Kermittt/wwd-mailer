@@ -37,7 +37,7 @@ namespace WWD.Mailer.Functions
             }
             catch (Exception e)
             {
-                log.LogError(e, "Exception during processing.");
+                log.LogError(e, "Error processing request.");
             }
         }
     }
