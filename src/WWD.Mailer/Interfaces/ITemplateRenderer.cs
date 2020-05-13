@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace WWD.Mailer.Interfaces
 {
     /// <summary>
-    /// Client library for connecting to an external template renderer service.
+    /// Client service for connecting to an external template renderer service.
     /// </summary>
     public interface ITemplateRenderer
     {
